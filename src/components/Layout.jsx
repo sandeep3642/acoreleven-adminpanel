@@ -23,6 +23,7 @@ const Layout = () => {
       "subadmin-view": "sub-admin",
       "create-payout": "earnings",
       activityLog: "service",
+      ECSControlDashboard: "ECSControlDashboard",
       // Add more mappings as needed
     };
 
@@ -72,22 +73,29 @@ const Layout = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Check if current path should hide sidebar
+  const currentPath = location.pathname.replace("/", "");
+  const hideSidebar = currentPath === "ECSControlDashboard";
+
   return (
     <div className="flex h-screen w-full overflow-hidden">
-      {/* Overlay for mobile */}
-      {sidebarOpen && (
+      {/* Overlay for mobile - only show if sidebar is visible */}
+      {!hideSidebar && sidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      <Sidebar
-        activeItem={activeItem}
-        setActiveItem={setActiveItem}
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-      />
+      {/* Conditionally render Sidebar */}
+      {!hideSidebar && (
+        <Sidebar
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
+      )}
 
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />

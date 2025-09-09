@@ -8,7 +8,7 @@ import { X } from "lucide-react";
 // import ServiceRequestIcon from "../assets/service-req.png";
 // import EarningIcons from "../assets/earning.png";
 // import SettingsIcon from "../assets/setting.png";
-// import LogoIcon from "../assets/Logo.png";
+import LogoIcon from "../assets/Logo.png";
 
 const Sidebar = ({
   activeItem,

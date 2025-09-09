@@ -1,96 +1,3 @@
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import HeroImage from "../../assets/hero.png";
-// import LogoImage from "../../assets/Logo.png";
-// import Loader from "../../utility/Loader";
-// // import { loginUser } from "./loginService";
-// import { toast } from "react-toastify";
-
-// const Login = () => {
-//   const navigate = useNavigate();
-//   const [email, setEmail] = useState("diwakar@qicapp.com");
-//   const [password, setPassword] = useState("Diwakar@1991");
-//   const [loading, setLoading] = useState(false);
-
-//   return (
-//     <>
-//       {loading ? (
-//         <Loader />
-//       ) : (
-//         <div className="flex min-h-screen  items-center justify-center p-4">
-//           <div className="flex flex-col md:flex-row bg-white rounded-2xl border border-gray-300 w-full max-w-5xl overflow-hidden">
-//             {/* Left Side - Form */}
-//             <div className="w-full md:w-1/2 p-8 bg-[#e9f2f5]">
-//               <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-//                 Login
-//               </h2>
-//               <p className="text-sm text-gray-600 mb-6">
-//                 Enter the email and OTP to sign in
-//               </p>
-
-//               {/* Mobile Number Input */}
-//               <div className="mb-4">
-//                 <label className="block text-gray-700 text-sm mb-1">
-//                   Email
-//                 </label>
-//                 <div className="flex">
-//                   <input
-//                     type="text"
-//                     value={email}
-//                     onChange={(e) => setEmail(e.target.value)}
-//                     className="w-[70%] flex-grow border border-gray-300 rounded-lg px-4 py-3 focus:outline-none text-black"
-//                     placeholder="Enter Email"
-//                   />
-//                 </div>
-//               </div>
-
-//               {/* OTP Input */}
-//               <div className="mb-4">
-//                 <label className="block text-gray-700 text-sm mb-1">
-//                   Password
-//                 </label>
-//                 <input
-//                   type="text"
-//                   value={password}
-//                   onChange={(e) => setPassword(e.target.value)}
-//                   className="w-full border border-gray-300 rounded-lg px-4 text-black py-3 focus:outline-none"
-//                   placeholder="Enter Password"
-//                 />
-//               </div>
-
-//               {/* Login Button */}
-//               <button
-//                 // onClick={handleLogin}
-//                 className="w-full cursor-pointer bg-[#00AFC1] text-white py-3 mt-10 rounded-xl hover:bg-[#0096a9] transition"
-//               >
-//                 Login
-//               </button>
-//             </div>
-
-//             {/* Right Side - Image + Text */}
-//             <div className="w-full md:w-1/2 bg-white p-4 flex flex-col justify-center items-center">
-//               <div className="w-full">
-//                 <img src={LogoImage} alt="logo" className="h-15 w-100" />
-//               </div>
-//               <h3 className="text-[#40A8C4] font-semibold text-2xl text-center my-4">
-//                 Fast. Trusted. Hassle-Free Repairs.
-//               </h3>
-
-//               <img
-//                 src={HeroImage}
-//                 alt="Login Illustration"
-//                 className="w-4/5 mb-4"
-//               />
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// };
-
-// export default Login;
-
 import { useState } from "react";
 import { User, Lock } from "lucide-react";
 import HeroImage from "../../assets/hero.png";
@@ -103,7 +10,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       setLoading(true);
-    //   const response = await loginUser(email, password);
+      //   const response = await loginUser(email, password);
 
       const { details, status } = response;
       if (status && status.success === true) {
@@ -120,10 +27,10 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center p-4">
-      <div className="flex flex-col lg:flex-row bg-white rounded-3xl shadow-lg w-full max-w-8xl overflow-hidden">
+    <div className="min-h-screen max-w-7xl mx-auto flex items-center justify-center p-4">
+      <div className="flex flex-col lg:flex-row border-1 border-gray-100 shadow-lg w-full rounded-md max-w-9xl overflow-hidden p-4">
         {/* Left Side - Hero Image and Welcome Text */}
-        <div className="w-full lg:w-1/2 bg-gradient-to-br from-gray-50 to-gray-100 p-8 flex flex-col justify-center items-center">
+        <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center items-center border-r-2 border-gray-200 ">
           {/* Welcome Text */}
 
           {/* Hero Image */}
@@ -142,17 +49,17 @@ const Login = () => {
             {/* Header */}
             <div className="mb-8">
               <div className="w-12 h-1 bg-red-500 rounded-full mb-6"></div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                Login to Filing System
+              <h2 className="text-3xl font-bold text-gray-800 mb-2 text-left">
+                Login to Filing Systemmm
               </h2>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-sm text-left">
                 Enter the User ID and Password to sign in
               </p>
             </div>
 
             {/* User ID Input */}
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-medium mb-2">
+              <label className="block text-gray-500 text-sm font-medium mb-2 text-left">
                 User ID
               </label>
               <div className="relative">
@@ -169,7 +76,7 @@ const Login = () => {
 
             {/* Password Input */}
             <div className="mb-8">
-              <label className="block text-gray-700 text-sm font-medium mb-2">
+              <label className="block text-gray-500 text-sm font-medium mb-2 text-left">
                 Password
               </label>
               <div className="relative">

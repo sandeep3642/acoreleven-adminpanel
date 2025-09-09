@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Search, Bell, ChevronDown, Menu, X, LogOut } from "lucide-react";
 import UserIcon from "../assets/user.png";
 import { useUser } from "../context/UserContext";
-
+import LogoIcon from "../assets/Logo.png";
 const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
@@ -11,22 +11,36 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (showProfileMenu && !event.target.closest('.profile-dropdown-container')) {
+      if (
+        showProfileMenu &&
+        !event.target.closest(".profile-dropdown-container")
+      ) {
         setShowProfileMenu(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [showProfileMenu]);
 
   const hanleLogout = () => {
-    localStorage.clear()
+    localStorage.clear();
     window.location.href = "https://soldice.in/";
-  }
+  };
 
+  const currentPath = location.pathname.replace("/", "");
+  const hideSidebar = currentPath === "ECSControlDashboard";
   return (
-    <div className="bg-white px-4 lg:px-6 py-3 lg:py-4 flex items-center justify-between min-w-0">
+    <div className="bg-white  py-3 lg:py-4 flex items-center min-w-0  justify-evenly">
+      {hideSidebar && (
+        <div className="rounded-lg flex items-center   mr-10 lg:mr-0">
+          <img
+            src={LogoIcon}
+            alt=""
+            style={{ width: "221.78px", height: "51px", objectFit: "contain" }}
+          />
+        </div>
+      )}
       {/* Left section with hamburger and search */}
       <div className="flex items-center space-x-3 lg:space-x-4 flex-1 min-w-0">
         {/* Hamburger menu for mobile */}

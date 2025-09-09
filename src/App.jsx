@@ -12,6 +12,7 @@ import TokenHandler from "./utility/TokenHandler";
 import Loader from "./utility/Loader";
 import PublicRoute from "./utility/PublicRoute";
 import PrivateRoute from "./utility/PrivateRoute";
+import ECSControlDashboard from "./pages/ECS/ECSControlDashboard";
 
 function App() {
   return (
@@ -32,34 +33,12 @@ function App() {
 
             {/* Private Routes */}
             <Route element={<PrivateRoute />}>
+            
               <Route element={<Layout />}>
-                {/* <Route path="dashboard" element={<Dashboard />} />
-                <Route path="customer" element={<CustomerManagement />} />
-                <Route path="customer-view" element={<CustomerView />} />
-                <Route path="technician" element={<Technician />} />
-                <Route path="technician-view" element={<TechnicianView />} />
-                <Route path="service" element={<ServiceRequestManager />} />
-                <Route path="service-detail" element={<ServiceDetails />} />
                 <Route
-                  path="spare-part-detail"
-                  element={<SparePartDetails />}
+                  path="ECSControlDashboard"
+                  element={<ECSControlDashboard />}
                 />
-                <Route
-                  path="add-new-technician"
-                  element={<AddTechnicianForm />}
-                />
-                <Route path="activityLog" element={<ActivityLog />} />
-                <Route path="account" element={<AdminAccountSettings />} />
-                <Route path="complaint" element={<ComplaintsTabs />} />
-                <Route path="*" element={<NotFoundPage />} />
-                <Route path="sub-admin" element={<SubAdmin />} />
-                <Route path="subadmin-view" element={<SubAdminView />} />
-                <Route path="earnings" element={<Earnings />} />
-                <Route path="create-payout" element={<CreatePayoutPage />} />
-                <Route
-                  path="earnings-detail"
-                  element={<EarningsRequestDetail />}
-                /> */}
               </Route>
             </Route>
           </Routes>
