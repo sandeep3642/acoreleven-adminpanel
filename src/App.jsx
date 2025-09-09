@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Suspense, lazy } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Layout from "./components/Layout";
+
+const Login = lazy(() => import("./pages/Login"));
+
+import "./App.css";
+import { UserProvider } from "./context/UserContext";
+import TokenHandler from "./utility/TokenHandler";
+import Loader from "./utility/Loader";
+import PublicRoute from "./utility/PublicRoute";
+import PrivateRoute from "./utility/PrivateRoute";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className='border-2 border-red-900'>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-red-500 font-extrabold'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is   akkaka {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <UserProvider>
+      <Router>
+        <TokenHandler /> {/* 👈 Add this before <Suspense> */}
+        <Suspense fallback={<Loader />}>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            theme="colored"
+          />
+          <Routes>
+            {/* Public Route */}
+            <Route element={<PublicRoute />}>
+              <Route path="/" element={<Login />} />
+            </Route>
+
+            {/* Private Routes */}
+            <Route element={<PrivateRoute />}>
+              <Route element={<Layout />}>
+                {/* <Route path="dashboard" element={<Dashboard />} />
+                <Route path="customer" element={<CustomerManagement />} />
+                <Route path="customer-view" element={<CustomerView />} />
+                <Route path="technician" element={<Technician />} />
+                <Route path="technician-view" element={<TechnicianView />} />
+                <Route path="service" element={<ServiceRequestManager />} />
+                <Route path="service-detail" element={<ServiceDetails />} />
+                <Route
+                  path="spare-part-detail"
+                  element={<SparePartDetails />}
+                />
+                <Route
+                  path="add-new-technician"
+                  element={<AddTechnicianForm />}
+                />
+                <Route path="activityLog" element={<ActivityLog />} />
+                <Route path="account" element={<AdminAccountSettings />} />
+                <Route path="complaint" element={<ComplaintsTabs />} />
+                <Route path="*" element={<NotFoundPage />} />
+                <Route path="sub-admin" element={<SubAdmin />} />
+                <Route path="subadmin-view" element={<SubAdminView />} />
+                <Route path="earnings" element={<Earnings />} />
+                <Route path="create-payout" element={<CreatePayoutPage />} />
+                <Route
+                  path="earnings-detail"
+                  element={<EarningsRequestDetail />}
+                /> */}
+              </Route>
+            </Route>
+          </Routes>
+        </Suspense>
+      </Router>
+    </UserProvider>
+  );
 }
 
-export default App
+export default App;
