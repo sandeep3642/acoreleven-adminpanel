@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout";
 
 const Login = lazy(() => import("./pages/Login"));
-
+const Billing = lazy(() => import("./pages/Billing"));
 import "./App.css";
 import { UserProvider } from "./context/UserContext";
 import TokenHandler from "./utility/TokenHandler";
@@ -38,6 +38,10 @@ function App() {
                 <Route
                   path="ECSControlDashboard"
                   element={<ECSControlDashboard />}
+                />
+                  <Route
+                  path="billing"
+                  element={<Billing />}
                 />
               </Route>
             </Route>
