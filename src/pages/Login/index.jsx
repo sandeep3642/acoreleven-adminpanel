@@ -50,7 +50,7 @@ const Login = () => {
             <div className="mb-8">
               <div className="w-12 h-1 bg-red-500 rounded-full mb-6"></div>
               <h2 className="text-3xl font-bold text-gray-800 mb-2 text-left">
-                Login to Filing Systemmm
+                Login to Filing System
               </h2>
               <p className="text-gray-600 text-sm text-left">
                 Enter the User ID and Password to sign in
