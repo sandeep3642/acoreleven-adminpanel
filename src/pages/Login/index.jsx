@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { User, Lock } from "lucide-react";
 import HeroImage from "../../assets/hero.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
+    localStorage.setItem("token", 12345);
+    navigate("/billing");
     try {
       setLoading(true);
       //   const response = await loginUser(email, password);
@@ -18,7 +22,6 @@ const Login = () => {
         const { token, user } = details;
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
-        navigate("/dashboard");
       }
     } catch (error) {
     } finally {

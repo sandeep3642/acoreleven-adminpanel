@@ -1,6 +1,9 @@
 import React from "react";
+import Header from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
 const ECSControlDashboard = () => {
+  const navigate = useNavigate();
   const moduleButtons = [
     { name: "Upload", position: "top-left" },
     { name: "User Manager", position: "top-center" },
@@ -21,13 +24,13 @@ const ECSControlDashboard = () => {
   };
 
   const handleStartECS = () => {
-    console.log("Start ECS clicked");
-    // Add your ECS start logic here
+    navigate("/login");
   };
 
   return (
-    <div className="p-8">
-      <div className="max-w-full mx-auto">
+    <div className="">
+      <Header />
+      <div className="max-w-full mx-auto p-8">
         {/* Module Buttons Grid */}
         <div className="grid grid-cols-4 gap-4 mb-12">
           {/* First Row */}

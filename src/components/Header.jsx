@@ -42,7 +42,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
         </div>
       )}
       {/* Left section with hamburger and search */}
-      <div className="flex items-center space-x-3 lg:space-x-4 flex-1 min-w-0">
+      <div className="flex items-center space-x-3 lg:space-x-4 flex-1 min-w-0  ml-5">
         {/* Hamburger menu for mobile */}
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}

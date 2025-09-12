@@ -26,23 +26,18 @@ function App() {
             theme="colored"
           />
           <Routes>
+            <Route
+              path=""
+              element={<ECSControlDashboard />}
+            />
             {/* Public Route */}
-              <Route path="/" element={<Login />} />
-            <Route element={<PublicRoute />}>
-            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route element={<PublicRoute />}></Route>
 
             {/* Private Routes */}
             <Route element={<PrivateRoute />}>
-            
               <Route element={<Layout />}>
-                <Route
-                  path="ECSControlDashboard"
-                  element={<ECSControlDashboard />}
-                />
-                  <Route
-                  path="billing"
-                  element={<Billing />}
-                />
+                <Route path="billing" element={<Billing />} />
               </Route>
             </Route>
           </Routes>
