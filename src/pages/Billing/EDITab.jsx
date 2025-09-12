@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Plus, X, Paperclip, User, MoreHorizontal } from 'lucide-react';
 const EDITab = () => {
   return (
-    <div className="p-6 bg-gray-50">
+    <div className=" bg-gray-50">
       <div className="bg-white rounded-lg shadow-sm">
         <div className="p-6">
           <div className="flex justify-between items-start mb-6">

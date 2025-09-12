@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Search, Bell, ChevronDown, Menu, X, LogOut } from "lucide-react";
 import UserIcon from "../assets/user.png";
 import { useUser } from "../context/UserContext";
 import LogoIcon from "../assets/Logo.png";
+import { useNavigate } from "react-router-dom";
 const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-
+  const navigate = useNavigate()
   const { user } = useUser();
 
   // Close dropdown when clicking outside
@@ -25,7 +26,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
 
   const hanleLogout = () => {
     localStorage.clear();
-    window.location.href = "https://soldice.in/";
+    navigate('/');
   };
 
   const currentPath = location.pathname.replace("/", "");

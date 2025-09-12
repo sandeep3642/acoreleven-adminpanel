@@ -4,7 +4,7 @@ import { Plus, X, Paperclip, User, MoreHorizontal } from 'lucide-react';
 // AWB Tab Component
 const AWBTab = () => {
   return (
-    <div className="p-6 bg-gray-50">
+    <div className="bg-gray-50">
       <div className="bg-white rounded-lg shadow-sm">
         <div className="p-6">
           <h3 className="text-lg font-medium text-gray-700 mb-6">Shipper</h3>
