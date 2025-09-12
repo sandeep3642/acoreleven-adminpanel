@@ -75,7 +75,7 @@ const Layout = () => {
 
   // Check if current path should hide sidebar
   const currentPath = location.pathname.replace("/", "");
-  const hideSidebar = currentPath === "ECSControlDashboard";
+  const hideSidebar = false;
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
