@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import DutyCalculationComponent from "./DutyCalculationComponent";
 
 const AWBShipmentForm = () => {
   const [activeTab, setActiveTab] = useState("AWB");
@@ -636,118 +637,7 @@ const AWBShipmentForm = () => {
       </div>
 
       {/* Duty Amount Calculation Table */}
-      <div className="mt-8">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-medium text-gray-800">
-            Duty Amount Calculation
-          </h3>
-          <div className="flex items-center space-x-2">
-            <span className="bg-blue-500 text-white px-3 py-1 rounded text-sm">
-              1248
-            </span>
-            <span className="bg-blue-500 text-white px-3 py-1 rounded text-sm">
-              1150
-            </span>
-          </div>
-        </div>
-
-        <div className="border border-gray-300 rounded-lg overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Ad Valorem
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Specific Tate
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Duty Amt
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  T/N/L
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Notification
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Serial Number
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  List Number
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Notification type
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200">
-              {dutyCalculationData.map((row, index) => (
-                <tr key={index} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-sm text-gray-600">
-                    {row.label}
-                  </td>
-                  <td className="px-4 py-3 text-sm text-gray-900">
-                    {row.adValorem}
-                  </td>
-                  <td className="px-4 py-3 text-sm text-gray-900">
-                    {row.specificTate}
-                  </td>
-                  <td className="px-4 py-3 text-sm text-gray-900">
-                    {row.dutyAmt}
-                  </td>
-                  <td className="px-4 py-3 text-sm text-gray-900"></td>
-                  <td className="px-4 py-3 text-sm text-gray-900"></td>
-                  <td className="px-4 py-3 text-sm text-gray-900"></td>
-                  <td className="px-4 py-3 text-sm text-gray-900"></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Item Details Table Header */}
-        <div className="mt-6 bg-blue-500 text-white px-4 py-2 text-sm font-medium rounded-t">
-          Item Details
-        </div>
-
-        <div className="border border-t-0 border-gray-300 rounded-b-lg overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  SB Item No.
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Shipping Bill No.
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  SB Date
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Invoice SLNo.
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  SB Invoice No.
-                </th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-700">
-                  Import Against License
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="px-4 py-3 text-sm text-gray-900"></td>
-                <td className="px-4 py-3 text-sm text-gray-900"></td>
-                <td className="px-4 py-3 text-sm text-gray-900"></td>
-                <td className="px-4 py-3 text-sm text-gray-900"></td>
-                <td className="px-4 py-3 text-sm text-gray-900"></td>
-                <td className="px-4 py-3 text-sm text-gray-900"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+     <DutyCalculationComponent/>
     </div>
   );
 
