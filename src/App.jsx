@@ -13,6 +13,7 @@ import Loader from "./utility/Loader";
 import PublicRoute from "./utility/PublicRoute";
 import PrivateRoute from "./utility/PrivateRoute";
 import ECSControlDashboard from "./pages/ECS/ECSControlDashboard";
+import AWBShipmentForm from "./pages/AWBShipment/AWBShipmentForm";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route element={<Layout />}>
                 <Route path="billing" element={<Billing />} />
+                <Route path="aWBShipment" element={<AWBShipmentForm />} />
+                {/* AWBShipmentForm */}
               </Route>
             </Route>
           </Routes>
