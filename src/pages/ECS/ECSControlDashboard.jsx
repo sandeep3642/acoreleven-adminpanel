@@ -36,25 +36,25 @@ const ECSControlDashboard = () => {
           {/* First Row */}
           <button
             onClick={() => handleModuleClick("Upload")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Upload
           </button>
           <button
             onClick={() => handleModuleClick("User Manager")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             User Manager
           </button>
           <button
             onClick={() => handleModuleClick("Scan client")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Scan client
           </button>
           <button
             onClick={() => handleModuleClick("Search AWB")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Search AWB
           </button>
@@ -62,25 +62,25 @@ const ECSControlDashboard = () => {
           {/* Second Row */}
           <button
             onClick={() => handleModuleClick("Shipment Data")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Shipment Data
           </button>
           <button
             onClick={() => handleModuleClick("Shortage Handling")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Shortage Handling
           </button>
           <button
             onClick={() => handleModuleClick("Hard copy")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Hard copy
           </button>
           <button
             onClick={() => handleModuleClick("EDI Images")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             EDI Images
           </button>
@@ -88,19 +88,19 @@ const ECSControlDashboard = () => {
           {/* Third Row */}
           <button
             onClick={() => handleModuleClick("Mass Print Images")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Mass Print Images
           </button>
           <button
             onClick={() => handleModuleClick("Label Manager")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Label Manager
           </button>
           <button
             onClick={() => handleModuleClick("Station ROD Print")}
-            className="bg-white border border-[#606060] rounded-lg px-6 py-4 text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
+            className="bg-white border border-[#606060] font-medium w-65 rounded-lg px-6 py-5 cursor-pointer text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 shadow-sm"
           >
             Station ROD Print
           </button>
@@ -112,7 +112,7 @@ const ECSControlDashboard = () => {
         <div className="flex justify-end">
           <button
             onClick={handleStartECS}
-            className="bg-red-600 hover:bg-red-700 text-white font-medium px-8 py-3 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+            className="bg-red-600 hover:bg-red-700 cursor-pointer text-white font-medium px-8 py-3 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
           >
             Start ECS
           </button>

@@ -3,19 +3,29 @@ import { X } from "lucide-react";
 import LogoIcon from "../assets/Logo.png";
 import DownIcon from "../assets/icon.png";
 import LeftIcon from "../assets/left.png";
+
 const Sidebar = ({
   activeItem,
   setActiveItem,
   sidebarOpen,
   setSidebarOpen,
 }) => {
-  const [expandedSections, setExpandedSections] = useState({
-    workflow: true,
-    declarationEntry: false,
-    preSubmitEdit: false,
-    cbsePrint: false,
-    submitEdi: false,
-  });
+  // Function to get all expandable items from the menu structure
+  const getAllExpandableItems = (items) => {
+    const expandableItems = {};
+
+    const traverse = (itemList) => {
+      itemList.forEach((item) => {
+        if (item.children && item.children.length > 0) {
+          expandableItems[item.id] = true;
+          traverse(item.children);
+        }
+      });
+    };
+
+    traverse(items);
+    return expandableItems;
+  };
 
   // Hierarchical menu structure matching the image
   const menuItems = [
@@ -46,7 +56,7 @@ const Sidebar = ({
           id: "cb-xiv-1",
           label: "CB XIV (1)",
           path: "/cb-xiv-1",
-          active: true,
+          active: false,
         },
         { id: "ct-missing-6", label: "CT Missing (6)", path: "/ct-missing-6" },
         { id: "calling-4", label: "Calling (4)", path: "/calling-4" },
@@ -109,7 +119,43 @@ const Sidebar = ({
         },
       ],
     },
+    {
+      id: "filterTree",
+      label: "Filter Tree (YY/MM/DD)",
+      type: "section",
+      children: [
+        {
+          id: "25/02/10",
+          label: "25/02/10",
+          type: "subsection",
+          children: [
+            { id: "EK514", label: "EK514", path: "/EK514" },
+            {
+              id: "EK0514",
+              label: "EK0514",
+              path: "/EK0514",
+              children: [
+                { id: "doc", label: "DOC(1)", path: "/EK514" },
+                { id: "lv", label: "LV(1)", path: "/lv" },
+                { id: "mv", label: "MV(7)", path: "/mv" },
+              ],
+            },
+          ],
+        },
+        {
+          id: "25/02/06",
+          label: "25/02/06",
+          type: "subsection",
+          children: [],
+        },
+      ],
+    },
   ];
+
+  // Initialize all expandable sections as open
+  const [expandedSections, setExpandedSections] = useState(() =>
+    getAllExpandableItems(menuItems)
+  );
 
   const toggleSection = (sectionId) => {
     setExpandedSections((prev) => ({
@@ -135,6 +181,7 @@ const Sidebar = ({
     const hasChildren = item.children && item.children.length > 0;
     const isActive = activeItem === item.id || item.active;
 
+
     if (isSection) {
       return (
         <div key={item.id}>
@@ -146,10 +193,12 @@ const Sidebar = ({
               {isExpanded ? (
                 <img src={DownIcon} alt="" className="w-3 h-2" />
               ) : (
-                <img src={LeftIcon} alt="" className="w-2 h-2" />
+                <img src={LeftIcon} alt="" className="w-2 h-3" />
               )}
             </div>
-            <span className="text-sm font-medium text-gray-800 ml-4">{item.label}</span>
+            <span className="text-sm font-medium text-gray-800 ml-4">
+              {item.label}
+            </span>
           </div>
           {isExpanded && hasChildren && (
             <div>
@@ -171,7 +220,7 @@ const Sidebar = ({
               {isExpanded ? (
                 <img src={DownIcon} alt="" className="w-3 h-2" />
               ) : (
-                <img src={LeftIcon} alt="" className="w-2 h-2" />
+                <img src={LeftIcon} alt="" className="w-2 h-3" />
               )}
             </div>
             <span className="text-sm text-gray-700">{item.label}</span>
@@ -185,21 +234,76 @@ const Sidebar = ({
       );
     }
 
-    // Regular menu item
-    const indentClass = depth === 1 ? "ml-4" : depth === 2 ? "ml-8" : "";
+    // Regular menu item or item with children (but not marked as section/subsection)
+    const indentClass =
+      depth === 1
+        ? "ml-3"
+        : depth === 2
+        ? "ml-6"
+        : depth === 3
+        ? "ml-9"
+        : depth === 4
+        ? "ml-11"
+        : "";
+    const marginClass = depth <= 2 ? "mb-2" : "mb-1";
 
+    // If this item has children but is not a section/subsection, treat it like a subsection
+    if (hasChildren) {
+      return (
+        <div key={item.id} className={`${indentClass} ${marginClass}`}>
+          <div
+            className={`flex items-center cursor-pointer py-1.5 px-2 hover:bg-gray-50 rounded-md ${
+              isActive ? "bg-red-50 border-l-3 border-red-400" : ""
+            }`}
+            onClick={() => toggleSection(item.id)}
+          >
+            <div className="w-4 flex justify-center mr-2">
+              {isExpanded ? (
+                <img src={DownIcon} alt="" className="w-3 h-2" />
+              ) : (
+                <img src={LeftIcon} alt="" className="w-2 h-3" />
+              )}
+            </div>
+            <span
+              className={`text-sm font-medium ${
+                isActive ? "text-red-600" : "text-gray-600"
+              }`}
+            >
+              {item.label}
+            </span>
+          </div>
+          {isExpanded && (
+            <div className="ml-4 mt-1">
+              {item.children.map((child) => renderMenuItem(child, depth + 1))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Regular menu item without children
     return (
       <div
         key={item.id}
-        className={`flex items-center cursor-pointer py-0.5 hover:bg-gray-50 ${indentClass} ${
-          isActive ? "text-red-600" : ""
+        className={`flex items-center cursor-pointer py-1 px-2 hover:bg-gray-50 rounded-md ${indentClass} ${marginClass} ${
+          isActive ? "bg-red-50 border-l-3 border-red-300 text-red-600" : ""
         }`}
         onClick={() => handleNavigation(item)}
       >
-        <div className="w-4 flex justify-center mr-1">
-          <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
+        <div className="w-4 flex justify-center mr-2">
+          <div
+            className={`w-1.5 h-1.5 rounded-full ${
+              isActive ? "bg-red-400" : "bg-gray-400"
+            }`}
+          ></div>
         </div>
-        <span className="text-sm">{item.label}</span>
+        <span
+          className={`text-xs font-normal ${
+            isActive ? "text-red-600" : "text-gray-600"
+          }`}
+        >
+          {item.label}
+        </span>
       </div>
     );
   };
@@ -211,7 +315,7 @@ const Sidebar = ({
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0 lg:static
         fixed inset-y-0 left-0
-        w-60
+        w-80
         min-h-screen
         overflow-y-auto
         text-xs

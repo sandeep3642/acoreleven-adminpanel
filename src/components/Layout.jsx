@@ -4,7 +4,7 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 const Layout = () => {
-  const [activeItem, setActiveItem] = useState("dashboard");
+  const [activeItem, setActiveItem] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
