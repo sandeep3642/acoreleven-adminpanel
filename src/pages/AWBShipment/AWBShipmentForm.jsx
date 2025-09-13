@@ -666,7 +666,7 @@ const AWBShipmentForm = () => {
         <button
           className={`px-6 py-3 text-sm font-medium border-b-2 ${
             activeTab === "AWB"
-              ? "bg-yellow-100 border-b-2 border-[#F8E117]"
+              ? "bg-[#FFFDEB] border-b-3 border-[#F8E117]"
               : "border-transparent text-gray-600 hover:text-gray-800 hover:border-gray-300"
           }`}
           onClick={() => setActiveTab("AWB")}
@@ -676,7 +676,7 @@ const AWBShipmentForm = () => {
         <button
           className={`px-6 py-3 text-sm font-medium border-b-2 ${
             activeTab === "Shipment"
-              ? "bg-yellow-100 border-b-2 border-[#F8E117]"
+              ? "bg-[#FFFDEB] border-b-3 border-[#F8E117]"
               : "border-transparent text-gray-600 hover:text-gray-800 hover:border-gray-300"
           }`}
           onClick={() => setActiveTab("Shipment")}

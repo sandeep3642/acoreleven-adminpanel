@@ -1,58 +1,78 @@
 import React, { useState } from 'react';
-import { Plus, X, Paperclip, User, MoreHorizontal } from 'lucide-react';
+import { Plus, X, Paperclip, User, MoreHorizontal, Download, ChevronDown } from 'lucide-react';
 
 const DocumentTab = () => {
+  const [isDocumentsOpen, setIsDocumentsOpen] = useState(true);
+  
   return (
-    <div className=" bg-gray-50">
+    <div className="bg-gray-50 mt-2">
       <div className="bg-white rounded-lg shadow-sm">
-        <div className="p-6">
-          <h3 className="text-lg font-medium text-gray-700 mb-6">Documents</h3>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Document Type</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Document number</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Upload Date</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Status</th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Download</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t">
-                  <td className="px-4 py-3 text-sm">GSTIN</td>
-                  <td className="px-4 py-3 text-sm">07AB5473791738</td>
-                  <td className="px-4 py-3 text-sm">May 19,2021</td>
-                  <td className="px-4 py-3">
-                    <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Verified</span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <button className="text-blue-600 hover:text-blue-800">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr className="border-t">
-                  <td className="px-4 py-3 text-sm">EIC</td>
-                  <td className="px-4 py-3 text-sm">07AB5473791738</td>
-                  <td className="px-4 py-3 text-sm">May 19,2021</td>
-                  <td className="px-4 py-3">
-                    <span className="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Verified</span>
-                  </td>
-                  <td className="px-4 py-3">
-                    <button className="text-blue-600 hover:text-blue-800">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div className="">
+          {/* Documents Header */}
+          <div 
+            className="bg-gray-100 flex items-center justify-between p-4 cursor-pointer rounded-t-lg border-b border-gray-200"
+            onClick={() => setIsDocumentsOpen(!isDocumentsOpen)}
+          >
+            <h3 className="text-base font-medium text-gray-800">Documents</h3>
+            <ChevronDown 
+              className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDocumentsOpen ? 'rotate-180' : ''}`}
+            />
           </div>
+          
+          {/* Documents Table */}
+          {isDocumentsOpen && (
+            <div className="p-6 rounded-b-lg">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-gray-200">
+                      <th className="px-0 py-3 text-left text-sm font-medium text-gray-500">Document Type</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Document number</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Upload Date</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Status</th>
+                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-500">Download</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-gray-100">
+                      <td className="px-0 py-4 text-sm font-medium text-gray-900">GSTIN</td>
+                      <td className="px-4 py-4 text-sm text-gray-700">07AB5473793738</td>
+                      <td className="px-4 py-4 text-sm text-gray-700">May 19,2021</td>
+                      <td className="px-4 py-4">
+                        <select className="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-700 border-none outline-none cursor-pointer">
+                          <option>Verified</option>
+                          <option>Pending</option>
+                          <option>Rejected</option>
+                        </select>
+                      </td>
+                      <td className="px-4 py-4">
+                        <button className="text-green-600 hover:text-green-700">
+                          <Download size={16} />
+                        </button>
+                      </td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="px-0 py-4 text-sm font-medium text-gray-900">EIC</td>
+                      <td className="px-4 py-4 text-sm text-gray-700">07AB5473793738</td>
+                      <td className="px-4 py-4 text-sm text-gray-700">May 19,2021</td>
+                      <td className="px-4 py-4">
+                        <select className="px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-700 border-none outline-none cursor-pointer">
+                          <option>Verified</option>
+                          <option>Pending</option>
+                          <option>Rejected</option>
+                        </select>
+                      </td>
+                      <td className="px-4 py-4">
+                        <button className="text-green-600 hover:text-green-700">
+                          <Download size={16} />
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
